@@ -1,19 +1,22 @@
 var app = angular.module('100DaysTrackerApp', []);
 
 app.controller('GitHubController', function ($scope, $http) {
-  $scope.gitHubObject = {};
-  $http({
-    method: 'GET',
-    url: 'https://api.github.com/repos/goteamtim/100-days-of-code'
-  }).then(function successCallback(response) {
-    // this callback will be called asynchronously
-    // when the response is available
-    $scope.gitHubObject = response;
-    console.log("success with the url");
-    console.log(response);
-  }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-  });
+  $scope.gitHubObject = {},
+  this.username = "",
+  this.repo = "";
+  $scope.getUserInfo = function(username, repo) {
+    let apiUrl = 'https://api.github.com/repos/' + username + '/' + repo;
+    $http({
+      method: 'GET',
+      url: apiUrl
+    }).then(function successCallback(response) {
+      //response.data will be only the data if you ever want that
+      $scope.gitHubObject = response;
+      console.log("success with the url");
+      console.log(response);
+    }, function errorCallback(response) {
+      //Show the user something that there is an issue.  Also maybe try and setup something so I log this?
+    });
+  };
 
 });

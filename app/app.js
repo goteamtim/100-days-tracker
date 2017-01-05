@@ -17,17 +17,14 @@ app.controller('GitHubController', ['$scope','$http',function ($scope, $http) {
       //response.data will be only the data if you ever want that
       //$scope.hasGitHubData = true;
       $scope.gitHubObject = response;
-      if(activeToday(response.data.updated_at)){
+      if(activeToday(response.data.pushed_at)){
         console.log("You have finished for today!")
       }else{
         console.log("Dont forget to code today!")
       }
       console.log("success with the url");
-      console.log(response.data.updated_at);
+      console.log(response.data.pushed_at);
       
-      $scope.$apply(function(){
-        toggleState($scope.hasGitHubData)
-      })
     }, function errorCallback(response) {
       //Show the user something that there is an issue.  Also maybe try and setup something so I log this?
     });

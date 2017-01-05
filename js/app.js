@@ -2,10 +2,11 @@ var app = angular.module('100DaysTrackerApp', []);
 
 app.controller('GitHubController', function ($scope, $http) {
   $scope.gitHubObject = {},
-  this.username = "",
-  this.repo = "";
-  $scope.getUserInfo = function(username, repo) {
-    let apiUrl = 'https://api.github.com/repos/' + username + '/' + repo;
+  $scope.username = "",
+  $scope.repo = "";
+  $scope.getUserInfo = function() {
+    let apiUrl = 'https://api.github.com/repos/' + $scope.username + '/' + $scope.repo;
+    console.log(apiUrl);
     $http({
       method: 'GET',
       url: apiUrl

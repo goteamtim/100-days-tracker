@@ -47,11 +47,11 @@
       </nav>
             <div class="row">
                 <div class="col-sm-12 col-md-12">
-                    <form ng-submit="getUserInfo(username,repo)">
+                    <form ng-submit="getUserInfo()">
  <label>GitHub Username</label>
- <input type="text" name="username" ng-model="GitHubController.username"/>
+ <input type="text" name="username" ng-model="username"/>
  <label for="">Repository Name</label>
- <input type="text" name="repo" ng-model="GitHubController.repo"/>
+ <input type="text" name="repo" ng-model="repo"/>
  <input type="submit" value="Submit"/>
 </form>    
 

@@ -1,12 +1,12 @@
 var app = angular.module('100DaysTrackerApp', []);
 
 
-app.controller('GitHubController', ['$scope','$http',function ($scope, $http) {
+app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) {
   $scope.gitHubObject,
-  $scope.hasGitHubData = true,
-  $scope.username = "",
-  $scope.repo = "",
-  $scope.firstTimeUser = checkUserStatus();
+    $scope.hasGitHubData = true,
+    $scope.username = "",
+    $scope.repo = "",
+    $scope.firstTimeUser = checkUserStatus();
   $scope.getUserInfo = function () {
     let apiUrl = 'https://api.github.com/repos/' + $scope.username + '/' + $scope.repo;
     console.log(apiUrl);
@@ -17,45 +17,42 @@ app.controller('GitHubController', ['$scope','$http',function ($scope, $http) {
       //response.data will be only the data if you ever want that
       //$scope.hasGitHubData = true;
       $scope.gitHubObject = response;
-      if(activeToday(response.data.pushed_at)){
+      if (activeToday(response.data.pushed_at)) {
         console.log("You have finished for today!")
-      }else{
+      } else {
         console.log("Dont forget to code today!")
       }
       console.log("success with the url");
       console.log(response.data.pushed_at);
-      
+
     }, function errorCallback(response) {
       //Show the user something that there is an issue.  Also maybe try and setup something so I log this?
     });
   };
 
-  function checkUserStatus(){
-    if(localStorage.getItem("lastVisitDate")  === null){
+  function checkUserStatus() {
+    if (localStorage.getItem("lastVisitDate") === null) {
       return true;
-  }else{
-    return false;
-  }
+    } else {
+      return false;
+    }
   }
 
-  function activeToday(lastDate){
-    var lastDevDate = new Date(lastDate),
-    todayDevDate = new Date(),
-    timeDifference = todayDevDate.getTime() - lastDevDate.getTime(),
-    dayDifference = Math.ceil(timeDifference / (1000* 3600 * 24));
-    console.log(dayDifference)
-    if(dayDifference > 0){
-      return false;
-    }else{
+  function activeToday(lastDate) {
+    var inputDate = new Date(lastDate),
+    todaysDate = new Date();
+    if (inputDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0)) {
       return true;
+    } else {
+      return false;
     }
 
   }
 
-  function toggleState(currentState){
-    if(currentState){
+  function toggleState(currentState) {
+    if (currentState) {
       currentState = false;
-    }else{
+    } else {
       currentState = true;
     }
   }

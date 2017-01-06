@@ -50,11 +50,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
   }
 
   function toggleState(currentState) {
-    if (currentState) {
-      currentState = false;
-    } else {
-      currentState = true;
-    }
+    currentState ? false: true;
   }
 
 }]);

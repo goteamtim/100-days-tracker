@@ -3,6 +3,7 @@
         <title>100-days-tracker</title>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+        <script src="./app/sanitize.js"></script>
         <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
@@ -49,8 +50,8 @@
             </div>
             <div class="row" ng-show="{{hasGitHubData}}">
               <div class="col-sm-12 col-md-12">
-                <p>Last Updated</p>
-                <h1 >{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</h1>
+                <p>It looks like you last updated the reop on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span> which means <span ng-bind-html="codedToday"></span></p>
+                
                 
               </div>
             </div>

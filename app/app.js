@@ -1,4 +1,4 @@
-var app = angular.module('100DaysTrackerApp', []);
+var app = angular.module('100DaysTrackerApp', ['ngSanitize']);
 
 
 app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) {
@@ -6,7 +6,8 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
     $scope.hasGitHubData = true,
     $scope.username = "",
     $scope.repo = "",
-    $scope.firstTimeUser = checkUserStatus();
+    $scope.firstTimeUser = checkUserStatus(),
+    $scope.codedToday;
   $scope.getUserInfo = function () {
     let apiUrl = 'https://api.github.com/repos/' + $scope.username + '/' + $scope.repo;
     console.log(apiUrl);
@@ -18,12 +19,12 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
       //$scope.hasGitHubData = true;
       $scope.gitHubObject = response;
       if (activeToday(response.data.pushed_at)) {
-        console.log("You have finished for today!")
+        $scope.codedToday = "You have finished for today! Have you <a href=\"https:\/\/twitter.com\/intent\/tweet?text=I%20completed%20my%20%23100daysofcode%20challenge%20for%20today!%20I%20worked%20on\">Tweeted</a> yet?";
       } else {
-        console.log("Dont forget to code today!")
+        $scope.codedToday = "you need to code today!";
       }
-      console.log("success with the url");
-      console.log(response.data.pushed_at);
+      
+      
 
     }, function errorCallback(response) {
       //Show the user something that there is an issue.  Also maybe try and setup something so I log this?

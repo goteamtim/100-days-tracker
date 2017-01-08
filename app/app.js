@@ -68,3 +68,17 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
   }
 
 }]);
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./100-days-service.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}else{
+  //Let the user know their browser doesnt support service workers and wont get updates etc.
+}

@@ -6,11 +6,11 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
     $scope.hasGitHubData = true,
     $scope.username = "",
     $scope.repo = "",
-    $scope.firstTimeUser = checkUserStatus(),
+    $scope.firstTimeUser = isUserNew(),
     $scope.codedToday;
   $scope.getUserInfo = function () {
     let apiUrl = 'https://api.github.com/repos/' + $scope.username + '/' + $scope.repo;
-    console.log(apiUrl);
+    //console.log(apiUrl);
     $http({
       method: 'GET',
       url: apiUrl
@@ -23,15 +23,28 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
       } else {
         $scope.codedToday = "you need to code today!";
       }
-      
-      
+      //Should do a check here since the first time people visit this will return null
+      if (localStorage.getItem($scope.username + "_userObject") != null) {
+        //Something is there, need to update it all
+        var storedUserData = localStorage.getItem($scope.username + "_userObject");
+        storedUserData = JSON.parse(storedUserData);
 
+        if (storedUserData.repos.indexOf($scope.repo) == -1) {
+          storedUserData.repos.push($scope.repo);
+        }
+        storedUserData.lastUpdated = new Date();
+        storedUserData.lastGithubApiResponse = response;
+        localStorage.setItem($scope.username + "_userObject",storedUserData);
+      }else{
+        
+      localStorage.setItem($scope.username + "_userObject", JSON.stringify({ 'username': $scope.username, 'reops': [$scope.repo], 'lastUpdated': new Date(), 'lastGithubApiResponse': response }));
+      }
     }, function errorCallback(response) {
       //Show the user something that there is an issue.  Also maybe try and setup something so I log this?
     });
   };
 
-  function checkUserStatus() {
+  function isUserNew() {
     if (localStorage.getItem("lastVisitDate") === null) {
       return true;
     } else {
@@ -41,7 +54,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
 
   function activeToday(lastDate) {
     var inputDate = new Date(lastDate),
-    todaysDate = new Date();
+      todaysDate = new Date();
     if (inputDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0)) {
       return true;
     } else {
@@ -51,7 +64,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
   }
 
   function toggleState(currentState) {
-    currentState ? false: true;
+    return currentState ? false : true;
   }
 
 }]);

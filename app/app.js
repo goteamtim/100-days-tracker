@@ -29,7 +29,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
         var storedUserData = localStorage.getItem($scope.username + "_userObject");
         storedUserData = JSON.parse(storedUserData);
 
-        if (storedUserData.repos.indexOf($scope.repo) == -1) {
+        if (storedUserData.repos.indexOf($scope.repo) === undefined) {
           storedUserData.repos.push($scope.repo);
         }
         storedUserData.lastUpdated = new Date();

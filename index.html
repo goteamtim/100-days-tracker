@@ -1,78 +1,89 @@
 <html ng-app="100DaysTrackerApp">
-    <head>
-        <title>100-days-tracker</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
-        <script src="./app/sanitize.js"></script>
-        <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    </head>
-    <body>
+
+<head>
+  <title>100-days-tracker</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+  <script src="./app/sanitize.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="icon" type="image/png" href="/app/images/favicon.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <!-- Always shows a header, even in smaller screens. -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">100 Days of Code Tracker</span>
         
-        <div ng-controller="GitHubController" class="container">
-            <nav class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">100-days-tracker</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Options</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="https://medium.freecodecamp.com/join-the-100daysofcode-556ddb4579e4#.86jqnepcz">About 100 Days of Code</a>
       </nav>
-            <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <form ng-submit="getUserInfo()">
-                    <label>GitHub Username:</label>
-                    <input type="text" name="username" ng-model="username"/>
-                    <label for="">Repository Name:</label>
-                    <input type="text" name="repo" ng-model="repo"/>
-                    <input type="submit" value="Submit"/>
-                    </form>    
-
-                </div>
-            </div>
-            <div class="row" ng-show="{{hasGitHubData}}">
-              <div class="col-sm-12 col-md-12">
-                <p>It looks like you last updated the reop on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span> which means <span ng-bind-html="codedToday"></span></p>
-                
-                
-              </div>
-            </div>
-            <div class="row" ng-show="firstTimeUser">
-              <div><p>Welcome!  This is your first time here</p></div>
-            </div>
-        </div>
-    </body>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div ng-controller="GitHubController" class="container">
     
-    <script src="./app/app.js"></script>
-    
-    <script src="./app/js/jquery.min.js"></script>
-    <script src="./app/js/bootstrap.min.js"></script>
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <form ng-submit="getUserInfo()">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input type="text" name="username" ng-model="username" class="mdl-textfield__input" id="username"/>
+          <label class="mdl-textfield__label" for="username">GitHub Username...</label>
+          </div>  
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input type="text" name="repo" ng-model="repo" class="mdl-textfield__input" id="repo"/>
+          <label for="repo" class="mdl-textfield__label">Repository...</label>
+          </div>
+          <input type="submit" value="Submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" />
+        </form>
 
-  ga('create', 'UA-36459542-1', 'auto');
-  ga('send', 'pageview');
+      </div>
+    </div>
+    <div class="row" ng-show="{{hasGitHubData}}">
+      <div class="col-sm-12 col-md-12">
+        <p>It looks like you last updated the reop on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>          which means <span ng-bind-html="codedToday"></span></p>
 
-</script>
+
+      </div>
+    </div>
+    <div class="row" ng-show="firstTimeUser">
+      <div>
+        <p>Welcome! I made this app while doing #100daysofcode. I hope that it helps you stay motivated and reminded about coding
+          each day during the challenge. </p>
+      </div>
+    </div>
+  </div>
+      </div>
+    </main>
+  </div>
+  
+</body>
+
+<script src="./app/app.js"></script>
+
+<script src="./app/js/jquery.min.js"></script>
+<script src="./app/js/bootstrap.min.js"></script>
+<script>
+      (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-36459542-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
 </html>

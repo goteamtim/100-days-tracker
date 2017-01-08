@@ -27,15 +27,14 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
       if (localStorage.getItem($scope.username + "_userObject") != null) {
         //Something is there, need to update it all
         var storedUserData = localStorage.getItem($scope.username + "_userObject");
-        console.log(storedUserData);
         storedUserData = JSON.parse(storedUserData);
-
+        
         if (storedUserData.repos.indexOf($scope.repo) == -1) {
           storedUserData.repos.push($scope.repo);
         }
         storedUserData.lastUpdated = new Date();
         storedUserData.lastGithubApiResponse = response;
-        localStorage.setItem($scope.username + "_userObject",storedUserData);
+        localStorage.setItem($scope.username + "_userObject",JSON.stringify(storedUserData));
       }else{
         
       localStorage.setItem($scope.username + "_userObject", JSON.stringify({ 'username': $scope.username, 'repos': [$scope.repo], 'lastUpdated': new Date(), 'lastGithubApiResponse': response }));

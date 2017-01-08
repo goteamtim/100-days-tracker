@@ -21,7 +21,7 @@
       <div class="mdl-layout__header-row">
         <!-- Title -->
         <span class="mdl-layout-title">100 Days of Code Tracker</span>
-        
+
     </header>
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">Options</span>
@@ -32,41 +32,41 @@
     <main class="mdl-layout__content">
       <div class="page-content">
         <div ng-controller="GitHubController" class="container">
-    
-    <div class="row">
-      <div class="col-sm-12 col-md-12">
-        <form ng-submit="getUserInfo()">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input type="text" name="username" ng-model="username" class="mdl-textfield__input" id="username"/>
-          <label class="mdl-textfield__label" for="username">GitHub Username...</label>
-          </div>  
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input type="text" name="repo" ng-model="repo" class="mdl-textfield__input" id="repo"/>
-          <label for="repo" class="mdl-textfield__label">Repository...</label>
-          </div>
-          <input type="submit" value="Submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" />
-        </form>
-
-      </div>
-    </div>
-    <div class="row" ng-show="{{hasGitHubData}}">
-      <div class="col-sm-12 col-md-12">
-        <p>It looks like you last updated the reop on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>          which means <span ng-bind-html="codedToday"></span></p>
-
-
-      </div>
-    </div>
-    <div class="row" ng-show="firstTimeUser">
-      <div>
+          <div class="row">
+      <div class="col-md-12">
         <p>Welcome! I made this app while doing #100daysofcode. I hope that it helps you stay motivated and reminded about coding
           each day during the challenge. </p>
       </div>
     </div>
-  </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <form ng-submit="getUserInfo()">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input type="text" name="username" ng-model="username" class="mdl-textfield__input" id="username" />
+                  <label class="mdl-textfield__label" for="username">GitHub Username...</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input type="text" name="repo" ng-model="repo" class="mdl-textfield__input" id="repo" />
+                  <label for="repo" class="mdl-textfield__label">Repository...</label>
+                </div>
+                <input type="submit" value="Submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" />
+              </form>
+
+            </div>
+          </div>
+          <div class="row" ng-show="{{hasGitHubData}}">
+            <div class="col-sm-12 col-md-12">
+              <p>It looks like you last updated the reop on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>                which means <span ng-bind-html="codedToday"></span></p>
+
+
+            </div>
+          </div>
+
+        </div>
       </div>
     </main>
-  </div>
-  
+    </div>
+
 </body>
 
 <script src="./app/app.js"></script>
@@ -74,16 +74,16 @@
 <script src="./app/js/jquery.min.js"></script>
 <script src="./app/js/bootstrap.min.js"></script>
 <script>
-      (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-36459542-1', 'auto');
-      ga('send', 'pageview');
+  ga('create', 'UA-36459542-1', 'auto');
+  ga('send', 'pageview');
 
-    </script>
+</script>
 
 </html>

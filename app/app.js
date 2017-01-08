@@ -3,7 +3,7 @@ var app = angular.module('100DaysTrackerApp', ['ngSanitize']);
 
 app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) {
   $scope.gitHubObject,
-    $scope.hasGitHubData = true,
+    $scope.hasGitHubData = false,
     $scope.username = "",
     $scope.repo = "",
     $scope.firstTimeUser = isUserNew(),
@@ -16,7 +16,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
       url: apiUrl
     }).then(function successCallback(response) {
       //response.data will be only the data if you ever want that
-      //$scope.hasGitHubData = true;
+      $scope.hasGitHubData = true;
       $scope.gitHubObject = response;
       if (activeToday(response.data.pushed_at)) {
         $scope.codedToday = "You have finished for today! Have you <a href=\"https:\/\/twitter.com\/intent\/tweet?text=I%20completed%20my%20%23100daysofcode%20challenge%20for%20today!%20I%20worked%20on\">Tweeted</a> yet?";
@@ -27,6 +27,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
       if (localStorage.getItem($scope.username + "_userObject") != null) {
         //Something is there, need to update it all
         var storedUserData = localStorage.getItem($scope.username + "_userObject");
+        console.log(storedUserData);
         storedUserData = JSON.parse(storedUserData);
 
         if (storedUserData.repos.indexOf($scope.repo) == -1) {

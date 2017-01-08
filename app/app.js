@@ -29,7 +29,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
         var storedUserData = localStorage.getItem($scope.username + "_userObject");
         storedUserData = JSON.parse(storedUserData);
 
-        if (storedUserData.repos.indexOf($scope.repo) === undefined) {
+        if (storedUserData.repos.indexOf($scope.repo) == -1) {
           storedUserData.repos.push($scope.repo);
         }
         storedUserData.lastUpdated = new Date();
@@ -37,7 +37,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
         localStorage.setItem($scope.username + "_userObject",storedUserData);
       }else{
         
-      localStorage.setItem($scope.username + "_userObject", JSON.stringify({ 'username': $scope.username, 'reops': [$scope.repo], 'lastUpdated': new Date(), 'lastGithubApiResponse': response }));
+      localStorage.setItem($scope.username + "_userObject", JSON.stringify({ 'username': $scope.username, 'repos': [$scope.repo], 'lastUpdated': new Date(), 'lastGithubApiResponse': response }));
       }
     }, function errorCallback(response) {
       //Show the user something that there is an issue.  Also maybe try and setup something so I log this?
@@ -45,7 +45,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
   };
 
   function isUserNew() {
-    if (localStorage.getItem("lastVisitDate") === null) {
+    if (localStorage.getItem($scope.username + "_userObject") === undefined) {
       return true;
     } else {
       return false;

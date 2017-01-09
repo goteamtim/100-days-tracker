@@ -54,7 +54,7 @@
 
             </div>
           </div>
-          <div class="row" ng-show="{{hasGitHubData}}">
+          <div class="row" ng-show="hasGitHubData">
             <div class="col-sm-12 col-md-12">
               <p>It looks like you last updated the reop on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>                which means <span ng-bind-html="codedToday"></span></p>
 

@@ -33,11 +33,12 @@
       <div class="page-content">
         <div ng-controller="GitHubController" class="container">
           <div class="row">
-      <div class="col-md-12">
-        <p>Welcome! I made this app while doing #100daysofcode. I hope that it helps you stay motivated and reminded about coding
-          each day during the challenge. </p>
-      </div>
-    </div>
+            <div class="col-md-12">
+              <p>Welcome! I made this app while doing #100daysofcode. I hope that it helps you stay motivated and reminded about
+                coding each day during the challenge. </p>
+              <p>Enter your github username and a repo that you would like to track below to get started!</p>
+            </div>
+          </div>
           <div class="row">
             <div class="col-sm-12 col-md-12">
               <form ng-submit="getUserInfo()">
@@ -54,7 +55,12 @@
 
             </div>
           </div>
+          <div class="row" ng-show="loading">
+            <!-- MDL Spinner Component -->
+            <div class="mdl-spinner mdl-js-spinner is-active"></div>
+          </div>
           <div class="row" ng-show="hasGitHubData">
+            <!--Could possibly make this a card to display the user data.  Could also throw more info in here-->
             <div class="col-sm-12 col-md-12">
               <p>It looks like you last updated the reop on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>                which means <span ng-bind-html="codedToday"></span></p>
 

@@ -4,11 +4,13 @@ var app = angular.module('100DaysTrackerApp', ['ngSanitize']);
 app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) {
   $scope.gitHubObject,
     $scope.hasGitHubData = false,
+    $scope.loading = false,
     $scope.username = "",
     $scope.repo = "",
     $scope.firstTimeUser = isUserNew(),
     $scope.codedToday;
   $scope.getUserInfo = function () {
+    $scope.loading = true;
     let apiUrl = 'https://api.github.com/repos/' + $scope.username + '/' + $scope.repo;
     //console.log(apiUrl);
     $http({
@@ -16,6 +18,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
       url: apiUrl
     }).then(function successCallback(response) {
       //response.data will be only the data if you ever want that
+      $scope.loading = false;
       $scope.hasGitHubData = !$scope.hasGitHubData;
       $scope.gitHubObject = response;
       if (activeToday(response.data.pushed_at)) {
@@ -43,6 +46,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
       
     }, function errorCallback(response) {
       //Show the user something that there is an issue.  Also maybe try and setup something so I log this?
+      $scope.loading = false;
     });
   };
 

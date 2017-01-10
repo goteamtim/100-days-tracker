@@ -70,7 +70,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-8 col-md-8">
+            <div class="col-sm-8 col-md-8"><!--  Change the reference from rept to the repo from the user object so when they type it doesnt get updated -->
               <p>It looks like you last updated the {{repo}} reopsitory on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>                which means <span ng-bind-html="codedToday"></span></p>
 
               <div class="demo-card-wide mdl-card mdl-shadow--2dp">

@@ -19,7 +19,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
     }).then(function successCallback(response) {
       //response.data will be only the data if you ever want that
       $scope.loading = false;
-      $scope.hasGitHubData = !$scope.hasGitHubData;
+      $scope.hasGitHubData = !$scope.hasGitHubData; //I think this is where the bug is for the multiple submit clicks
       $scope.gitHubObject = response;
       if (activeToday(response.data.pushed_at)) {
         $scope.codedToday = "You have finished for today! Have you <a href=\"https:\/\/twitter.com\/intent\/tweet?text=I%20completed%20my%20%23100daysofcode%20challenge%20for%20today!%20I%20worked%20on\">Tweeted</a> yet?";

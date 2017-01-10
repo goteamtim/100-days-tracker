@@ -34,14 +34,14 @@
       <div class="page-content">
         <div ng-controller="GitHubController" class="container">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-4 col-md-4">
               <p>Welcome! I made this app while doing #100daysofcode. I hope that it helps you stay motivated and reminded about
                 coding each day during the challenge. </p>
               <p>Enter your github username and a repo that you would like to track below to get started!</p>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 col-md-12">
+          <!-- </div>
+          <div class="row"> -->
+            <div class="col-sm-8 col-md-8">
               <form ng-submit="getUserInfo()">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input type="text" name="username" ng-model="username" class="mdl-textfield__input" id="username" />
@@ -62,13 +62,13 @@
           </div>
           <div class="row" ng-show="hasGitHubData">
             <!--Could possibly make this a card to display the user data.  Could also throw more info in here-->
-            <div class="col-sm-12 col-md-12">
-              <p>It looks like you last updated the {{repo}} reopsitory on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>                which means <span ng-bind-html="codedToday"></span></p>
-
-
+            <div class="col-sm-4 col-md-4">
+              <div>Card Data</div>
             </div>
-            
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="col-sm-8 col-md-8">
+              <p>It looks like you last updated the {{repo}} reopsitory on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>                which means <span ng-bind-html="codedToday"></span></p>
+              
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
               <div class="mdl-card__title" ng-style="{'background-image' : 'url(./app/images/' + gitHubObject.data.language + '.png)'}">
                 <h2 class="mdl-card__title-text">{{repo}}</h2>
               </div>
@@ -88,6 +88,10 @@
     </a>
               </div>
             </div>
+
+            </div>
+            
+            
             
           </div>
 

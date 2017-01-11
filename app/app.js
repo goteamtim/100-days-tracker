@@ -11,6 +11,7 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
     $scope.codedToday;
   $scope.getUserInfo = function () {
     $scope.loading = true;
+    $scope.hasGitHubData = false;
     let apiUrl = 'https://api.github.com/repos/' + $scope.username + '/' + $scope.repo;
     //console.log(apiUrl);
     $http({

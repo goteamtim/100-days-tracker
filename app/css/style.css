@@ -29,3 +29,7 @@
 body {
   background-color: #ecf0f1;
 }
+
+.mdl-textfield__input {
+  border-bottom: none !important;
+}

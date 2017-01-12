@@ -30,16 +30,36 @@
       <div class="mdl-layout__header-row">
         <!-- Title -->
         <span class="mdl-layout-title">100 Days of Code Tracker</span>
+        <!--
+        <div class="mdl-menu--top-right" flex>
+                  <!-- Right aligned menu below button 
+<button id="demo-menu-lower-right"
+        class="mdl-button mdl-js-button mdl-button--icon">
+  <i class="material-icons">more_vert</i>
+</button>
 
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+    for="demo-menu-lower-right">
+  <li class="mdl-menu__item">Some Action</li>
+  <li class="mdl-menu__item">Another Action</li>
+  <li disabled class="mdl-menu__item">Disabled Action</li>
+  <li class="mdl-menu__item">Yet Another Action</li>
+</ul>
+        </div> -->
+      </div>
+      
     </header>
+    
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">Options</span>
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="https://medium.freecodecamp.com/join-the-100daysofcode-556ddb4579e4#.86jqnepcz">About 100 Days of Code</a>
       </nav>
     </div>
+  
     <main class="mdl-layout__content">
       <div class="page-content">
+
         <div ng-controller="GitHubController" class="container">
           <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-4">
@@ -78,7 +98,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-8 col-md-8"><!--  Change the reference from rept to the repo from the user object so when they type it doesnt get updated -->
+            <div class="col-sm-8 col-md-8">
+              <!--  Change the reference from rept to the repo from the user object so when they type it doesnt get updated -->
               <p>It looks like you last updated the {{gitHubObject.data.name}} reopsitory on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>                which means <span ng-bind-html="codedToday"></span></p>
 
               <div class="demo-card-wide mdl-card mdl-shadow--2dp">
@@ -111,7 +132,7 @@
         </div>
       </div>
     </main>
-    </div>
+  </div>
 
 </body>
 

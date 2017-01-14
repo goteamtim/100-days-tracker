@@ -8,7 +8,13 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
     $scope.username = "",
     $scope.repo = "",
     $scope.firstTimeUser = isUserNew(),
-    $scope.codedToday;
+
+    $scope.codedToday,
+    $scope.languages = {
+      'Python' : "#00CCFF",
+      "Ruby" : "",
+      "Javascript" : ""
+    };
   $scope.getUserInfo = function () {
     $scope.loading = true;
     $scope.hasGitHubData = false;

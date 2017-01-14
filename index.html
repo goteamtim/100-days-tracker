@@ -16,6 +16,7 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="icon" type="image/png" href="./app/images/favicon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -99,12 +100,13 @@
               </div>
             </div>
             <div class="col-sm-8 col-md-8">
-              <!--  Change the reference from rept to the repo from the user object so when they type it doesnt get updated -->
+              <!--  Change the reference from rept to the repo from the user object so when they type it doesnt get updated     right bottom no-repeat #00CCFF -->
               <p>It looks like you last updated the {{gitHubObject.data.name}} reopsitory on <span id="lastUpdated">{{gitHubObject.data.pushed_at | date:'MM/dd/yyyy @ h:mma'}}</span>                which means <span ng-bind-html="codedToday"></span></p>
 
               <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title" ng-style="{'background-image' : 'url(./app/images/' + gitHubObject.data.language + '.png)'}">
+                <div class="mdl-card__title" ng-style="{'background' : 'url(./app/images/' + gitHubObject.data.language + '.png) bottom right no-repeat'}">
                   <h2 class="mdl-card__title-text">{{gitHubObject.data.name}}</h2>
+                  
                 </div>
                 <div class="mdl-card__supporting-text">
                   {{gitHubObject.data.description}}

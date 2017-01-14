@@ -1,9 +1,10 @@
 .demo-card-wide.mdl-card {
-  width: 512px;
+  width: 80%;
 }
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
+  background-position: bottom right;
   
 }
 .demo-card-wide > .mdl-card__menu {
@@ -11,7 +12,7 @@
 }
 
 .demo-card-image.mdl-card {
-  width: 256px;
+  width: 100%;
   height: 256px;
   
 }
@@ -32,4 +33,8 @@ body {
 
 .mdl-textfield__input {
   border-bottom: none !important;
+}
+
+body {
+  font-family: 'Dosis', sans-serif;
 }

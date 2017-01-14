@@ -13,7 +13,10 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
     $scope.languages = {
       'Python' : "#00CCFF",
       "Ruby" : "",
-      "Javascript" : ""
+      "Javascript" : "#F7DF1E",
+      "Java": "#B07219",
+      "C#" : "#178600",
+      "PHP" : "#4F5D95"
     };
   $scope.getUserInfo = function () {
     $scope.loading = true;

@@ -55,7 +55,8 @@ app.controller('GitHubController', ['$scope', '$http', function ($scope, $http) 
       }
       
     }, function errorCallback(response) {
-      //Show the user something that there is an issue.  Also maybe try and setup something so I log this?
+      //Show the user something that there is an issue. 
+      alert("Error processing request.  Are you sure " + $scope.repo + " is a valid repo?");
       $scope.loading = false;
     });
   };
